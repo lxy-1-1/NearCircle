@@ -1,0 +1,13 @@
+.gradle/
+.gradle-home/
+**/build/
+**/target/
+local.properties
+.idea/
+*.iml
+work/
+data/
+*.log
+.env
+captures/
+**/.DS_Store
