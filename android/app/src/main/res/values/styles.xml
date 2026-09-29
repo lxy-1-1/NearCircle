@@ -1,0 +1,15 @@
+<resources>
+    <style name="Theme.NearCircle.Base" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="fontFamily">sans</item>
+        <item name="colorPrimary">#245C4D</item>
+        <item name="colorPrimaryVariant">#173F35</item>
+        <item name="colorSecondary">#245C4D</item>
+        <item name="android:colorAccent">#245C4D</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">#F7F8F4</item>
+        <item name="android:navigationBarColor">#F7F8F4</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:windowBackground">#F7F8F4</item>
+    </style>
+    <style name="Theme.NearCircle" parent="Theme.NearCircle.Base" />
+</resources>

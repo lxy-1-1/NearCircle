@@ -1,0 +1,56 @@
+name: Verify
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  server:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+          cache-dependency-path: server/pom.xml
+      - run: mvn -B -ntp -f server/pom.xml verify
+      - uses: actions/upload-artifact@v4
+        with:
+          name: server-jar
+          path: server/target/nearcircle-server-1.0.0.jar
+  android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - uses: gradle/actions/setup-gradle@v4
+      - run: sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
+      - working-directory: android
+        run: bash gradlew testDebugUnitTest assembleDebug lintDebug
+      - name: Enable emulator acceleration
+        run: sudo chmod a+rw /dev/kvm
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          target: default
+          arch: x86_64
+          disable-animations: true
+          script: cd android && bash gradlew connectedDebugAndroidTest
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: android-apk-and-reports
+          path: |
+            android/app/build/outputs/apk/debug/*.apk
+            android/app/build/reports/

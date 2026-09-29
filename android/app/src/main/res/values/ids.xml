@@ -1,0 +1,10 @@
+<resources>
+    <item name="login_username" type="id" />
+    <item name="login_nickname" type="id" />
+    <item name="login_password" type="id" />
+    <item name="login_server" type="id" />
+    <item name="chat_list" type="id" />
+    <item name="chat_input" type="id" />
+    <item name="main_list" type="id" />
+    <item name="post_body" type="id" />
+</resources>

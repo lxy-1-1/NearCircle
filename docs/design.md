@@ -32,7 +32,7 @@ Base `/api`, JSON snake_case, id 是 long，时间戳是 Unix epoch 毫秒。对
 - Post={id,author:User,body,media_id:null|string,created_at,liked:boolean,like_count,comments:[{id,author:User,body,created_at}]}。
 - POST `/ws-ticket` -> {ticket}，单次 30s ticket；WS `/ws?ticket=...`，服务端文本 JSON {type:"refresh"}，客户端收到后重新拉取，不把广播当可靠消息源。
 - GET `/health` -> {status:"ok"}。
-- demo profile 显式开启：账号 lin / zhou / xu，密码 NearCircle2026!，含已建立好友、聊天、动态；默认 profile 不初始化这些账号。
+- demo profile 显式开启：账号 lin / zhou / xuzhi，密码 NearCircle2026!，含已建立好友、聊天、动态；默认 profile 不初始化这些账号。
 
 ## 验收
 服务端真实 HTTP/数据库测试：身份验证、朋友圈越权、好友申请越权、消息幂等冲突与重试、游标分页、不合法输入、媒体越权、注销失效。Android JVM 测试关键协议/排序/重试规则；编译、lint；有条件时模拟器双账号端到端、屏幕旋转、离线补发与截图。未实测项目须明确标注，不用单元测试代替真机声明。

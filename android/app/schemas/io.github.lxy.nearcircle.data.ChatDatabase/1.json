@@ -1,0 +1,134 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "3a8f25f096ab154b953a9bcd4f4b35de",
+    "entities": [
+      {
+        "tableName": "messages",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`owner` TEXT NOT NULL, `localId` TEXT NOT NULL, `clientId` TEXT NOT NULL, `peerId` INTEGER NOT NULL, `serverId` INTEGER NOT NULL, `senderId` INTEGER NOT NULL, `createdAt` INTEGER NOT NULL, `body` TEXT NOT NULL, `status` TEXT NOT NULL, `error` TEXT NOT NULL, PRIMARY KEY(`owner`, `localId`))",
+        "fields": [
+          {
+            "fieldPath": "owner",
+            "columnName": "owner",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "localId",
+            "columnName": "localId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "clientId",
+            "columnName": "clientId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "peerId",
+            "columnName": "peerId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "serverId",
+            "columnName": "serverId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "senderId",
+            "columnName": "senderId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "createdAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "body",
+            "columnName": "body",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "error",
+            "columnName": "error",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "owner",
+            "localId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_messages_owner_peerId_serverId",
+            "unique": false,
+            "columnNames": [
+              "owner",
+              "peerId",
+              "serverId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_messages_owner_peerId_serverId` ON `${TABLE_NAME}` (`owner`, `peerId`, `serverId`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "sync_cursors",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`owner` TEXT NOT NULL, `peerId` INTEGER NOT NULL, `lastId` INTEGER NOT NULL, PRIMARY KEY(`owner`, `peerId`))",
+        "fields": [
+          {
+            "fieldPath": "owner",
+            "columnName": "owner",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "peerId",
+            "columnName": "peerId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastId",
+            "columnName": "lastId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "owner",
+            "peerId"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '3a8f25f096ab154b953a9bcd4f4b35de')"
+    ]
+  }
+}

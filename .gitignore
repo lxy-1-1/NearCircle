@@ -6,8 +6,11 @@ local.properties
 .idea/
 *.iml
 work/
-data/
+/data/
+/server/data/
+/dist/
 *.log
 .env
+.m2/
 captures/
 **/.DS_Store
