@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "checks": [
+    "native login and conversation list",
+    "Room outbox -> HTTP -> peer exactly once",
+    "WebSocket refresh and incoming HTTP catch-up",
+    "offline queue survives process stop and resumes after reopening",
+    "native publish -> friend-visible feed",
+    "like and comment persist",
+    "activity recreation preserves selected tab"
+  ],
+  "device": "emulator-5554",
+  "api": "35"
+}

@@ -28,7 +28,7 @@ python scripts/e2e_smoke.py --adb "你的 SDK/platform-tools/adb.exe" --reset-ap
 | Android JVM | 6 项；真实 MockWebServer HTTP、账号绑定头、错误分类、响应校验、媒体流上限 | `android/app/build/reports/tests/testDebugUnitTest` |
 | Android 仪器化 | 6 项；真实 Room、Keystore、Worker、ViewModel 与 Activity | `android/app/build/reports/androidTests/connected` |
 | 静态检查与 APK | Debug 构建、lint 0 errors；依赖更新提醒与中文界面国际化等 warnings 保留 | `android/app/build/reports/lint-results-debug.html` |
-| 真实操作 | 由 UI 冒烟脚本输出明细；屏幕为设备实际截图 | [e2e-result.json](e2e-result.json)、[screenshots/](screenshots/) |
+| 真实操作 | 7 项通过：登录、发送去重、接收补齐、断网与进程重启、发帖、点赞评论、旋转保留页面；屏幕为设备实际截图 | [e2e-result.json](e2e-result.json)、[screenshots/](screenshots/) |
 
 ## 曾失败并修复的回归
 

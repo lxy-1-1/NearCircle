@@ -26,7 +26,7 @@
 
 需要 Android 8.0+ 设备，以及一台运行 Java 17 的电脑。手机和电脑位于同一局域网。
 
-1. 从仓库 Releases 下载 Debug APK 和服务端 JAR。
+1. 从 [Releases](https://github.com/lxy-1-1/NearCircle/releases/latest) 下载 Debug APK 和服务端 JAR，或下载包含启动脚本与中文说明的 `NearCircle-1.0.0-demo.zip` 整包。
 2. 在 JAR 所在目录打开终端，运行：
 
 ```shell
